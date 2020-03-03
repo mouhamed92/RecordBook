@@ -8,19 +8,20 @@ public class Personne extends Record {
 
 	public Personne() {
 		
-	
+		
 	}
 
-	public Personne(String nom, String tel, boolean isPerson, String prenom, String dateN, String genre) {
-		this.nom=nom;
+	public Personne(String nom, String prenom,String tel, String dateN,boolean isPerson, String genre) {
+		super(nom, tel, isPerson);
 		this.prenom = prenom;
-		this.tel=tel;
 		this.dateN = dateN;
 		this.genre = genre;
-		this.isPerson=true;
 	}
 
+
 	public String getPrenom() {
+		System.out.println("Enter the surname:");
+		prenom = sc.nextLine();
 		return prenom;
 	}
 
@@ -29,6 +30,8 @@ public class Personne extends Record {
 	}
 
 	public String getDateN() {
+		System.out.println("Enter the birth day:");
+		dateN = sc.nextLine();
 		return dateN;
 	}
 
@@ -41,6 +44,8 @@ public class Personne extends Record {
 	}
 
 	public void setGenre(String genre) {
+		System.out.println("Enter the gender(M/W):");
+		genre = sc.nextLine();
 		this.genre = genre;
 	}
 

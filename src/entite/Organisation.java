@@ -7,7 +7,14 @@ public class Organisation extends Record {
 
 
 	
+	public Organisation() {
+		super();
+
+	}
+
+
 	public Organisation(String nom, String tel, boolean isPerson, String adresse) {
+		super(nom, tel, isPerson);
 		this.nom=nom ;
 		this.tel=tel;
 		this.adresse = adresse;
@@ -16,6 +23,8 @@ public class Organisation extends Record {
 
 
 	public String getAdresse() {
+		System.out.println("Enter the Adresse:");
+		nom = sc.nextLine();
 		return adresse;
 	}
 

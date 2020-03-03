@@ -3,7 +3,7 @@ import entite.Record;
 
 public interface IService {
 	
-	public boolean add(Record o);
+	public boolean add();
 	public boolean remove(int i);
 	public boolean edit(int i);
 	public int count();
