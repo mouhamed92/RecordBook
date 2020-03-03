@@ -47,13 +47,22 @@ public class ServiceImpl implements IService {
 			
 			return records.add(o);
 		}
-		   return false;	
+		   return false;
 	}
 
 	@Override
-	public boolean remove(int i) {
+	public boolean remove() {
 		
-		return false;
+		if(records.isEmpty()){
+			System.out.println("0 records");
+			return false ;
+		}else{
+			System.out.println("Select a record:");
+			int i = sc.nextInt();
+		    records.remove(i);
+		    
+		    return true ;
+		}	
 	}
 
 	@Override
