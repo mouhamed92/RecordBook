@@ -134,7 +134,7 @@ public class ServiceImpl implements IService {
 	@Override
 	public int count() {
 		
-		return 0;
+		return records.size();
 	}
 
 	@Override
