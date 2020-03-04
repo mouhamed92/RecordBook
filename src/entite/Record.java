@@ -49,7 +49,11 @@ public abstract class  Record {
 		this.isPerson = isPerson;
 	}
 	
-	
+	@Override
+	public String toString() {
+		
+		return this.nom ;
+	}
 	
 
 }

@@ -32,6 +32,10 @@ public class Organisation extends Record {
 		this.adresse = adresse;
 	}
 	
-	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
+	}
 
 }

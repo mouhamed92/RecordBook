@@ -23,8 +23,10 @@ public class ServiceImpl implements IService {
 	@Override
 	public boolean add() {
 		
+		do{
 		System.out.println("Enter the type (person, organization):");
 		typeR = sc.nextLine();
+		}while(!typeR.equals("person") && !typeR.equals("organization"));
 		
 		if(typeR.equals("person")){
 			
@@ -36,8 +38,9 @@ public class ServiceImpl implements IService {
 			p.setDateN(p.getDateN());
 			p.setGenre(p.getGenre());
 			
+			System.out.println("Record added!");
 			return records.add(p);
-			
+				
 		}else if(typeR.equals("organization")){
 			
 			Organisation o = new Organisation();
@@ -46,6 +49,7 @@ public class ServiceImpl implements IService {
 			o.setTel(o.getTel());
 			o.setPerson(false);
 			
+			System.out.println("Record added!");
 			return records.add(o);
 		}
 		   return false;
@@ -53,22 +57,31 @@ public class ServiceImpl implements IService {
 
 	@Override
 	public boolean remove() {
-		
 		if(records.isEmpty()){
 			System.out.println("0 records");
 			return false ;
 		}else{
+			afficheListe(records);
 			System.out.println("Select a record:");
 			i = sc.nextInt();
 		    records.remove(i);
-		    
+		    System.out.println("Record removered!");
 		    return true ;
 		}	
 	}
 
+	
+
 	@Override
 	public boolean edit() {
 		boolean verif = false ;
+		if(records.isEmpty()){
+			System.out.println("0 records");
+			return verif ;
+		}
+		
+		afficheListe(records);
+		
 		System.out.println("Select a record:");
 		i = sc.nextInt();
 		
@@ -76,6 +89,7 @@ public class ServiceImpl implements IService {
 		   Personne p = (Personne) records.get(i);
 		   System.out.println("Select a field (name, surname, birth, gender, number):");
 		   champ = sc.nextLine();
+		   sc.nextLine();
 		   switch (champ) {
 		   		case "name": System.out.println("Enter the name");
 			       			 p.setNom(sc.nextLine());
@@ -140,13 +154,31 @@ public class ServiceImpl implements IService {
 	@Override
 	public Record info(int i) {
 		
+	/*	for(Record record : records){
+			if(record.isPerson()){
+				Personne p =(Personne)record ;
+				System.out.println(p.toString());
+			}
+		}*/
 		return null;
 	}
-
+ 
 	@Override
 	public void exit() {
 		
 		
 	}
 
+	private void afficheListe(List<Record> r) {
+		  for(Record record : records){
+			if(record.isPerson()){
+				Personne p = (Personne) record ;
+				System.out.println(records.indexOf(record)+" "+p.toString());
+			}else{
+				Organisation o = (Organisation) record ;
+				System.out.println(records.indexOf(record)+" "+o.toString());
+			}
+		  }
+		
+	}
 }
