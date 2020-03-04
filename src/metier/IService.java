@@ -5,7 +5,7 @@ public interface IService {
 	
 	public boolean add();
 	public boolean remove();
-	public boolean edit(int i);
+	public boolean edit();
 	public int count();
 	public Record info(int i);
 	public void exit();

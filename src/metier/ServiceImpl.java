@@ -11,7 +11,8 @@ import entite.Record;
 public class ServiceImpl implements IService {
 	
 	List<Record> records ;
-	String typeR ;
+	String typeR , champ ;
+	int i ;
     Scanner sc = new Scanner(System.in);
     
 	public ServiceImpl() {
@@ -58,7 +59,7 @@ public class ServiceImpl implements IService {
 			return false ;
 		}else{
 			System.out.println("Select a record:");
-			int i = sc.nextInt();
+			i = sc.nextInt();
 		    records.remove(i);
 		    
 		    return true ;
@@ -66,9 +67,68 @@ public class ServiceImpl implements IService {
 	}
 
 	@Override
-	public boolean edit(int i) {
+	public boolean edit() {
+		boolean verif = false ;
+		System.out.println("Select a record:");
+		i = sc.nextInt();
 		
-		return false;
+	   if(records.get(i).isPerson()){
+		   Personne p = (Personne) records.get(i);
+		   System.out.println("Select a field (name, surname, birth, gender, number):");
+		   champ = sc.nextLine();
+		   switch (champ) {
+		   		case "name": System.out.println("Enter the name");
+			       			 p.setNom(sc.nextLine());
+		   		break;
+		   		
+		   		case "surname": System.out.println("Enter the surname");
+		   						p.setPrenom(sc.nextLine());
+		   		break;
+		   		
+		   		case "birth": System.out.println("Enter the birth");
+					p.setDateN(sc.nextLine());
+				break;
+				
+		   		case "gender": System.out.println("Enter the gender");
+								p.setGenre(sc.nextLine());
+				break;
+	
+		   		case "number": System.out.println("Enter the number");
+		   					  p.setTel(sc.nextLine());
+		   		break;
+
+
+		       default:System.out.println("Unkown input");
+		       break;
+		}
+		       records.add(i,p);
+		       verif = true ;
+	   }else{
+		   
+		   Organisation o = (Organisation) records.get(i);
+		   System.out.println("Select a field (organisation name, adresse, number):");
+		   champ = sc.nextLine();
+		   
+		   switch (champ) {
+		   		case "organisation name": System.out.println("Enter the organization name:");
+		   		  						  o.setNom(sc.nextLine());
+		   		break;
+		   		
+		   		case "adresse": System.out.println("Enter the adresse:");
+		   						o.setAdresse(sc.nextLine());
+			    break;
+			    
+		   		case "number": System.out.println("Enter the number:");
+				              o.setTel(sc.nextLine());
+			    break;
+
+		   		default:System.out.println("Unkown input");
+		   		break;
+		}
+			   records.add(i,o);
+		       verif = true ;
+	   }
+	           return verif ;
 	}
 
 	@Override
