@@ -52,6 +52,6 @@ public class Personne extends Record {
 	
 	public String toString() {
 		// TODO Auto-generated method stub
-		return super.toString()+" "+this.prenom;
+		return super.toString()+" "+this.prenom ;
 	}
 }

@@ -122,7 +122,6 @@ public class ServiceImpl implements IService {
 		   Organisation o = (Organisation) records.get(i);
 		   System.out.println("Select a field (organisation name, adresse, number):");
 		   champ = sc.nextLine();
-		   
 		   switch (champ) {
 		   		case "organisation name": System.out.println("Enter the organization name:");
 		   		  						  o.setNom(sc.nextLine());
