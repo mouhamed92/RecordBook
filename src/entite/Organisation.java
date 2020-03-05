@@ -24,7 +24,7 @@ public class Organisation extends Record {
 
 	public String getAdresse() {
 		System.out.println("Enter the Adresse:");
-		nom = sc.nextLine();
+		adresse = sc.nextLine();
 		return adresse;
 	}
 
